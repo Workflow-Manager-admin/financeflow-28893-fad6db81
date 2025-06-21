@@ -19,6 +19,48 @@ export interface Expense {
 
 export type ExpenseInput = Omit<Expense, 'id'> & { id?: number };
 
+/** Category and CategoryInput types for API usage. */
+export interface Category {
+  id: number;
+  name: string;
+}
+export type CategoryInput = Omit<Category, 'id'> & { id?: number };
+
+/**
+ * Fetch all user categories (GET /api/categories/).
+ * PUBLIC_INTERFACE
+ */
+export async function getCategories(): Promise<Category[]> {
+  const response = await api.get<Category[]>('/categories/');
+  return response.data;
+}
+
+/**
+ * Add a new category (POST /api/categories/).
+ * PUBLIC_INTERFACE
+ */
+export async function addCategory(category: CategoryInput): Promise<Category> {
+  const response = await api.post<Category>('/categories/', category);
+  return response.data;
+}
+
+/**
+ * Update a category by ID (PUT /api/categories/:id/).
+ * PUBLIC_INTERFACE
+ */
+export async function updateCategory(id: number, category: CategoryInput): Promise<Category> {
+  const response = await api.put<Category>(`/categories/${id}/`, category);
+  return response.data;
+}
+
+/**
+ * Delete a category by ID (DELETE /api/categories/:id/).
+ * PUBLIC_INTERFACE
+ */
+export async function deleteCategory(id: number): Promise<void> {
+  await api.delete(`/categories/${id}/`);
+}
+
 /**
  * Fetch all user expenses (GET /api/expenses/).
  * PUBLIC_INTERFACE
