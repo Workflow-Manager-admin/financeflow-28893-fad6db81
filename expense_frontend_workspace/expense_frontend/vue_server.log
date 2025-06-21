@@ -3,12 +3,9 @@
 > vite dev --host 0.0.0.0 --port 3000
 
 
-  VITE v6.1.0  ready in 625 ms
+  VITE v6.1.0  ready in 657 ms
 
   ➜  Local:   http://localhost:3000/
   ➜  Network: http://172.17.0.2:3000/
   ➜  Vue DevTools: Open http://localhost:3000/__devtools__/ as a separate window
   ➜  Vue DevTools: Press Alt(⌥)+Shift(⇧)+D in App to toggle the Vue DevTools
-5:07:04 AM [vite] (client) hmr update /src/views/CategoriesView.vue, /src/views/CategoriesView.vue?vue&type=style&index=0&scoped=6a11679b&lang.css
-5:07:13 AM [vite] (client) hmr update /src/views/CategoriesView.vue
-5:07:14 AM [vite] (client) hmr update /src/views/CategoriesView.vue

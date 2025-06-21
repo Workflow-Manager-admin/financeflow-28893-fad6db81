@@ -26,6 +26,14 @@ export interface Category {
 }
 export type CategoryInput = Omit<Category, 'id'> & { id?: number };
 
+/** MonthlyStatistics type for dashboard visualization. */
+export interface MonthlyStatistics {
+  month: number;
+  year: number;
+  total: number;
+  by_category: Record<string, number>;
+}
+
 /**
  * Fetch all user categories (GET /api/categories/).
  * PUBLIC_INTERFACE
@@ -94,4 +102,13 @@ export async function updateExpense(id: number, expense: ExpenseInput): Promise<
  */
 export async function deleteExpense(id: number): Promise<void> {
   await api.delete(`/expenses/${id}/`);
+}
+
+/**
+ * Fetch monthly statistics (GET /api/statistics/monthly/?year=&month=)
+ * PUBLIC_INTERFACE
+ */
+export async function getMonthlyStatistics(year: number, month: number): Promise<MonthlyStatistics> {
+  const response = await api.get<MonthlyStatistics>(`/statistics/monthly/?year=${year}&month=${month}`);
+  return response.data;
 }
